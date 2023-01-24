@@ -3,12 +3,16 @@ package es.usoarrays;
 import java.util.Arrays;
 
 public class UsoArrays {
+    
+    //COMENTARIO
+    //para la refactorización del codigo creamos diferentes metodo seleccionando el codigo concreto y 
+    //mediante refactor>introduce>method, asegurandonos de que estos son publicos
 
     public static void main(String[] args) {
 
-        int[] control = new int[40];
-        int[] practicas = new int[40];
-        float[] calificaciones = new float[40];
+        int[] control = new int[NUM_ALUMNOS];
+        int[] practicas = new int[NUM_ALUMNOS];
+        float[] calificaciones = new float[NUM_ALUMNOS];
         int maxNota = 0;
         int minNota = 0;
         int countAprobados = 0;
@@ -29,7 +33,7 @@ public class UsoArrays {
         generarEstadisticas(control, calificaciones, estadistica);
 
         //Método generarAprobadosSuspensos
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < NUM_ALUMNOS; i++) {
             if (calificaciones[i] < 5) {
                 countAprobados += 1;
             } else {
@@ -39,6 +43,8 @@ public class UsoArrays {
         //Método generarAprobadosSuspensos
         mostrarResultados(minNota, maxNota, control, practicas, calificaciones, countAprobados, countSuspensos);
     }
+    public static final int NUM_ALUMNOS = 40; //REFACTORIZACION REALIZADA SELECCIONANDO EL NUMERO REFACTOR>INTRODUCE>CONSTANT, ASEGURANDONOS MARCAR QUE SE SUSTITUYAN TODAS LAS OCURRENCIAS
+    
 
     public static void mostrarResultados(int minNota, int maxNota, int[] control, int[] practicas, float[] calificaciones, int countAprobados, int countSuspensos) {
         //Método mostrarResultados
@@ -66,7 +72,7 @@ public class UsoArrays {
                 }
             }
             if (count != 0) {
-                estadistica[i] = ((float) count / 40);
+                estadistica[i] = ((float) count / NUM_ALUMNOS);
             } else {
                 estadistica[i] = 0;
             }
